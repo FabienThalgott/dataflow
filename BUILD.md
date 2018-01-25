@@ -1,9 +1,10 @@
 # Build Instructions
 
 ## Prerequisite
-
+```bash
 apt-get install cabal-install
 cabal update
+```
 
 ## Setup
 
