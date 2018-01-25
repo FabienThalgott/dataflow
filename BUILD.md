@@ -3,6 +3,7 @@
 ## Prerequisite
 ```bash
 apt-get install cabal-install
+apt-get install zlib1g-dev
 cabal update
 ```
 
