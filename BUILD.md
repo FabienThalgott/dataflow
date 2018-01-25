@@ -1,34 +1,35 @@
-# Build Instructions
+# Build Instructions for Kali Linux as root user
 
 ## Prerequisite
+
 ```bash
-apt-get install cabal-install
-apt-get install zlib1g-dev
+git clone https://github.com/FabienThalgott/dataflow.git
+apt-get install -y haskell-platform zlib1g-dev graphviz
+
+
+ghc-pkg unregister HTTP
+ghc-pkg unregister vector
+ghc-pkg unregister QuickCheck
+ghc-pkg unregister tf-random
+```
+
+## Setup + Build + Install
+
+```bash
 cabal update
-```
-
-## Setup
-
-```bash
-cabal sandbox init # optional
-cabal install --only-dependencies --enable-tests
-cabal configure --enable-tests
-```
-
-## Build
-
-```bash
-cabal build
-```
-
-## Install
-
-If you initialized a sandbox the executable will end up in the sandbox, i.e.
-`.cabal-sandbox/bin/dataflow`. If you have no sandbox it will end up in
-`~/.cabal/bin/dataflow`. If you get any stange errors during install try a `cabal clean`
-
-```bash
+cabal sandbox init
+cabal install --only-dependencies
+cabal configure
 cabal install
+
+ln -s /root/dataflow/.cabal-sandbox/bin/dataflow /usr/bin/dataflow
+
+```
+
+## Generate png from .flow
+
+```bash
+ dataflow dfd webapp.flow | dot -Tpng > webapp.png
 ```
 
 ## Tests
