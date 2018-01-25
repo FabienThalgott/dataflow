@@ -1,5 +1,10 @@
 # Build Instructions
 
+## Prerequisite
+
+apt-get install cabal-install
+cabal update
+
 ## Setup
 
 ```bash
